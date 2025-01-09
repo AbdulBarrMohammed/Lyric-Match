@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import Typewriter from 'typewriter-effect';
 
 export default function Home() {
 
@@ -16,7 +17,7 @@ export default function Home() {
 
 
   const [listAlbums, setListAlbums] = useState<Album[]>([]);
-  const [lists, setLists] = useState([]);
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -55,18 +56,30 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center h-screen">
 
-      <main className="flex flex-col items-center text-center mt-36 gap-10 px-10">
+      <div className="flex flex-col items-center text-center mt-36 gap-10 px-10">
 
-        <h1 className="text-7xl font-bold">Uncover the song behind the words, just enter the <span className="text-sky-500">lyrics</span></h1>
-        <div>
-          <p>Enter lyrics: no one no one</p>
+        <h1 className="text-7xl font-bold">Uncover the song behind the words, just enter the lyrics</h1>
+        <div className="flex gap-1 text-4xl">
+          <p className="font-bold">Enter lyrics: </p>
+          <Typewriter
+            options={{
+              strings: [
+                "This girl is on fire",
+                "Come together right now over me",
+                "Cause this is thriller"
+              ],
+              autoStart: true,
+              loop: true,
+
+            }}
+          />
         </div>
 
 
         <div className="flex gap-3">
 
-            <input/>
-            <button>Search song</button>
+            <input className="pl-4 bg-[#0a0a0a] border border-white rounded-md text-lg pr-20" placeholder="Enter lyrics"/>
+            <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-4 text-2xl">Search song</button>
 
         </div>
 
@@ -80,7 +93,7 @@ export default function Home() {
 
         </div>
 
-      </main>
+      </div>
 
 
 
