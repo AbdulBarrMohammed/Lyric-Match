@@ -57,7 +57,7 @@ export default function Home() {
 
       <main className="flex flex-col items-center text-center mt-36 gap-10 px-10">
 
-        <h1 className="text-7xl font-bold">Uncover the song behind the words, just enter the lyrics</h1>
+        <h1 className="text-7xl font-bold">Uncover the song behind the words, just enter the <span className="text-sky-500">lyrics</span></h1>
         <div>
           <p>Enter lyrics: no one no one</p>
         </div>
