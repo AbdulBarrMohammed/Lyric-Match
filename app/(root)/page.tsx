@@ -56,10 +56,10 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center h-screen">
 
-      <div className="flex flex-col items-center text-center mt-36 gap-10 px-10">
+      <div className="flex flex-col items-center text-center mt-28 gap-10 px-10">
 
         <h1 className="text-7xl font-bold">Uncover the song behind the words, just enter the lyrics</h1>
-        <div className="flex gap-1 text-4xl">
+        <div className="flex gap-1 text-3xl">
           <p className="font-bold">Enter lyrics: </p>
           <Typewriter
             options={{
@@ -76,17 +76,17 @@ export default function Home() {
         </div>
 
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
 
             <input className="pl-4 bg-[#0a0a0a] border border-white rounded-md text-lg pr-20" placeholder="Enter lyrics"/>
-            <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-4 text-2xl">Search song</button>
+            <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl">Search song</button>
 
         </div>
 
-        <div className="flex flex-wrap gap-5 items-center justify-center px-20">
+        <div className="flex flex-wrap gap-4 items-center justify-center px-20">
             {listAlbums.map(alb =>
                 <div key={alb.id}>
-                  <img className='h-28' src={alb.images[0].url}/>
+                  <img className='h-24' src={alb.images[0].url}/>
                 </div>
 
             )}
