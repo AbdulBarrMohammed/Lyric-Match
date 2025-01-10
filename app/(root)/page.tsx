@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Typewriter from 'typewriter-effect';
 import Link from "next/link";
 
@@ -18,6 +18,7 @@ export default function Home() {
 
 
   const [listAlbums, setListAlbums] = useState<Album[]>([]);
+  const [lyricSearch, setLyricSearch] = useState("");
 
 
     useEffect(() => {
@@ -57,6 +58,16 @@ export default function Home() {
     }, []);
 
 
+    async function submitSearch(event: FormEvent<HTMLFormElement>) {
+      event.preventDefault()
+
+      const formData = new FormData(event.currentTarget)
+      console.log('entered search item', lyricSearch)
+
+
+    }
+
+
   return (
     <div className="flex flex-col items-center h-screen">
 
@@ -82,8 +93,16 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-3">
 
-            <input className="pl-4 bg-[#201919] border border-white rounded-md text-lg pr-20" placeholder="Enter lyrics"/>
+          <form onSubmit={submitSearch} className="flex gap-3">
+
+            <input type="text" id="lyric" name="lyric" className="pl-4 bg-[#201919] border border-white rounded-md text-lg pr-20"
+             placeholder="Enter lyrics"
+             onChange={(e) => setLyricSearch(e.target.value)}
+            />
             <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl">Search song </button>
+
+          </form>
+
 
         </div>
 
