@@ -64,9 +64,9 @@ export default function Home() {
           <Typewriter
             options={{
               strings: [
-                "This girl is on fire",
-                "Come together right now over me",
-                "Cause this is thriller"
+                "All you need is love, love. Love is all you need",
+                "Every new beginning comes from some other beginning's end",
+                "Even the genius asks questions"
               ],
               autoStart: true,
               loop: true,
@@ -79,7 +79,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-3">
 
             <input className="pl-4 bg-[#0a0a0a] border border-white rounded-md text-lg pr-20" placeholder="Enter lyrics"/>
-            <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl">Search song</button>
+            <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl">Search song </button>
 
         </div>
 
