@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import Typewriter from 'typewriter-effect';
+import Link from "next/link";
 
 export default function Home() {
 
@@ -38,11 +39,14 @@ export default function Home() {
             throw new Error('Network response was not ok');
           }
           const result = await response.json();
+          /*
           for (let i = 0; i < result.albums.length; i++) {
-            console.log(result.albums[i])
             setListAlbums(result.albums)
 
-          }
+          } */
+
+            //Set albums in a array
+          setListAlbums(result.albums)
 
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -78,7 +82,7 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-3">
 
-            <input className="pl-4 bg-[#0a0a0a] border border-white rounded-md text-lg pr-20" placeholder="Enter lyrics"/>
+            <input className="pl-4 bg-[#201919] border border-white rounded-md text-lg pr-20" placeholder="Enter lyrics"/>
             <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl">Search song </button>
 
         </div>
