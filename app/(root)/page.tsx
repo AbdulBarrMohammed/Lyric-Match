@@ -128,7 +128,19 @@ export default function Home() {
 
         </div>
 
+
+        <footer className="mt-20 mb-10">
+
+          <p>
+          © 2025 Abdul-Barr Mohammed. All rights reserved.
+          </p>
+        </footer>
+
+
+
       </div>
+
+
 
 
 
