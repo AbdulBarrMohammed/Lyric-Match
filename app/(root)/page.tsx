@@ -76,7 +76,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center h-screen">
 
-      <div className="flex flex-col items-center text-center mt-28 gap-10 px-10">
+      <div className="flex flex-col items-center text-center mt-24 gap-10 px-10">
 
         <h1 className="text-7xl font-bold">Uncover the song behind the words, just enter the lyrics</h1>
         <div className="flex gap-1 text-3xl">
@@ -104,7 +104,7 @@ export default function Home() {
              placeholder="Enter lyrics"
              onChange={(e) => setLyricSearch(e.target.value)}
             />
-            <Link className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl"
+            <Link className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl hover:opacity-80 transition-all duration-300 ease-in-out"
 
             href={{
               pathname: '/dashboard',
