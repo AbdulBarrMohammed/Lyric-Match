@@ -1,9 +1,14 @@
-'use client'
+"use client";
 import { FormEvent, useEffect, useState } from "react";
 import Typewriter from 'typewriter-effect';
 import Link from "next/link";
+import { useRouter } from 'next/navigation'
+
 
 export default function Home() {
+  const router = useRouter();
+
+
 
   interface Album {
     id: string;
@@ -14,7 +19,6 @@ export default function Home() {
     id: string
     url: string
   }
-
 
 
   const [listAlbums, setListAlbums] = useState<Album[]>([]);
@@ -59,11 +63,12 @@ export default function Home() {
 
 
     async function submitSearch(event: FormEvent<HTMLFormElement>) {
+      /*
       event.preventDefault()
-
       const formData = new FormData(event.currentTarget)
-      console.log('entered search item', lyricSearch)
 
+      console.log('entered search item', lyricSearch)
+      router.push(`/dashboard`) */
 
     }
 
@@ -99,7 +104,14 @@ export default function Home() {
              placeholder="Enter lyrics"
              onChange={(e) => setLyricSearch(e.target.value)}
             />
-            <button className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl">Search song </button>
+            <Link className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl"
+
+            href={{
+              pathname: '/dashboard',
+              query: {
+                search : lyricSearch
+              }
+            }}>Search song </Link>
 
           </form>
 
