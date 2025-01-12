@@ -12,7 +12,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
           <h1 className='text-3xl font-semibold'>LyricMatch</h1>
         </div>
 
-        <Link href="/dashboard" className='rounded-md bg-sky-500 font-bold text-white px-5 py-2 text-lg hover:opacity-80 transition-all duration-300 ease-in-out'>Discover</Link>
+        <Link href="/dashboard" className='rounded-md bg-white font-bold text-[#1F1F1F] px-5 py-2 text-lg hover:opacity-80 transition-all duration-300 ease-in-out'>Discover</Link>
 
       </div>
       {children}

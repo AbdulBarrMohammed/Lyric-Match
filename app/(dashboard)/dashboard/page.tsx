@@ -28,8 +28,25 @@ const Songs = () => {
     }
 
     const [songs, setSongs] = useState<Song[]>([]);
+    const [lyric, setLyric] = useState("");
+    const famousLyrics = [
+        "Let it be, let it be",
+        "We will, we will rock you",
+        "I want to hold your hand",
+        "You can't always get what",
+        "All you need is love",
+        "Hit me baby one more",
+        "I can't get no satisfaction",
+        "Every little thing she does",
+        "Don't stop believing, hold on",
+        "Cause I’m happy, clap along",
+        "Like a rolling stone, how",
+        "Is this the real life?",
+        "I want it that way",
+    ];
+
     const searchParams = useSearchParams();
-        const currentLyric = searchParams.get('search') || '';
+    const currentLyric = searchParams.get('search') || '';
 
 
 
@@ -37,13 +54,17 @@ const Songs = () => {
     useEffect(() => {
 
 
+        //Get random lyric
+        const randInt = Math.floor(Math.random() * (famousLyrics.length - 0 + 1) + 0);
 
-        //const search = "and I've got this friend you see";
+        //Set current lyric if search query is not empty else choose random lyric
+        const currentLyric = searchParams.get('search') || famousLyrics[randInt];
+        setLyric(currentLyric)
 
-
+        //Replace all space instances with %20
         const searchQuery = currentLyric ? currentLyric.replaceAll(" ", '%20') : 'it is empty';
 
-          const fetchData = async () => {
+        const fetchData = async () => {
 
 
             const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
@@ -75,9 +96,9 @@ const Songs = () => {
 
     return (
 
-        <div className="py-5 flex flex-col h-screen px-32">
+        <div className="py-10 flex flex-col h-screen px-3">
 
-            <h1 className="flex flex-start px-5 text-2xl font-bold">Songs with lyrics</h1>
+            <h1 className="flex flex-start px-5 text-3xl font-bold items-center">Songs with lyrics: <span className="font-normal ml-2 text-2xl"> "{lyric}"</span></h1>
 
             {/*
 
@@ -96,7 +117,7 @@ const Songs = () => {
                 {songs.map(song =>
                     <div  className="flex flex-col" key={song.key}>
 
-                        <div className="flex flex-col items-center gap-2 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
+                        <div className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
                             <img className="w-60 object-fill rounded-md" src={song.images.default} />
                             <div className="w-60 text-start">
                                 <p>{song.heading.title}</p>
