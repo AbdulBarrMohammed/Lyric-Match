@@ -11,6 +11,7 @@ const Songs = () => {
         key: string
         url: string
         heading: Heading
+        images: Image
 
         //images: []
 
@@ -22,16 +23,26 @@ const Songs = () => {
 
     }
 
+    interface Image {
+        default: string
+    }
+
     const [songs, setSongs] = useState<Song[]>([]);
-
-
     const searchParams = useSearchParams();
-    const currentLyric = searchParams.get('search')
+        const currentLyric = searchParams.get('search') || '';
 
-    const search = "and I've got this friend you see";
 
-    const searchQuery = search.replaceAll(" ", '%20');
+
+
     useEffect(() => {
+
+
+
+        //const search = "and I've got this friend you see";
+
+
+        const searchQuery = currentLyric ? currentLyric.replaceAll(" ", '%20') : 'it is empty';
+
           const fetchData = async () => {
 
 
@@ -58,7 +69,7 @@ const Songs = () => {
           };
 
           fetchData();
-        }, []);
+        }, [currentLyric]);
 
 
 
@@ -66,7 +77,8 @@ const Songs = () => {
 
         <div>
             <h1>Displayed songs</h1>
-            <h1>The current search query is : {currentLyric}</h1>
+
+            {/*
 
             <ul>
                 <li><Link href="/dashboard/songs/1">Song one</Link></li>
@@ -75,15 +87,28 @@ const Songs = () => {
 
 
             </ul>
+            */}
 
-            <ul>
+
+
+            <div className="flex flex-wrap gap-10 px-10">
                 {songs.map(song =>
-                    <div key={song.key}>
-                        {song.heading.title} -
-                        {song.heading.subtitle}
+                    <div  className="flex flex-col" key={song.key}>
+
+                        <div className="flex flex-col items-center gap-2">
+                            <img className="w-60 object-fill" src={song.images.default} />
+                            <div className="w-60 text-start">
+                                <p>{song.heading.title}</p>
+                                <p className="text-[#A5A5A5]">{song.heading.subtitle}</p>
+
+                            </div>
+
+                        </div>
+
+
                     </div>
                 )}
-            </ul>
+            </div>
 
         </div>
     )
