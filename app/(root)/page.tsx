@@ -100,7 +100,7 @@ export default function Home() {
 
           <form onSubmit={submitSearch} className="flex gap-3">
 
-            <input type="text" id="lyric" name="lyric" className="pl-4 bg-[#201919] border border-white rounded-md text-lg pr-20"
+            <input type="text" id="lyric" name="lyric" className="pl-4 bg-[#1F1F1F] border border-white rounded-md text-lg pr-20"
              placeholder="Enter lyrics"
              onChange={(e) => setLyricSearch(e.target.value)}
             />

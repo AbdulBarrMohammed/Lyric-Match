@@ -75,8 +75,9 @@ const Songs = () => {
 
     return (
 
-        <div>
-            <h1>Displayed songs</h1>
+        <div className="py-5 flex flex-col h-screen px-32">
+
+            <h1 className="flex flex-start px-5 text-2xl font-bold">Songs with lyrics</h1>
 
             {/*
 
@@ -91,12 +92,12 @@ const Songs = () => {
 
 
 
-            <div className="flex flex-wrap gap-10 px-10">
+            <div className="flex flex-wrap gap-1">
                 {songs.map(song =>
                     <div  className="flex flex-col" key={song.key}>
 
-                        <div className="flex flex-col items-center gap-2">
-                            <img className="w-60 object-fill" src={song.images.default} />
+                        <div className="flex flex-col items-center gap-2 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
+                            <img className="w-60 object-fill rounded-md" src={song.images.default} />
                             <div className="w-60 text-start">
                                 <p>{song.heading.title}</p>
                                 <p className="text-[#A5A5A5]">{song.heading.subtitle}</p>

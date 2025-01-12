@@ -9,16 +9,21 @@ const Layout = ({ children } : {children: React.ReactNode }) => {
     return (
 
         <div>
-            <div className="flex">
+            <div className="flex items-center justify-between px-5 py-5">
+
+                <div className='flex gap-2 items-center'>
+                    <img src={'/music-circle.svg'} className='h-12' />
+                    <h1 className='text-3xl font-semibold'>LyricMatch</h1>
+                </div>
 
 
-                <div>
+                <div className="flex gap-3">
 
-                    <input type="text" id="lyric" name="lyric" className="pl-4 bg-[#201919] border border-white rounded-md text-lg pr-20"
+                    <input type="text" id="lyric" name="lyric" className="pl-4 bg-[#1F1F1F] border border-white rounded-md text-lg pr-20"
                     placeholder="Enter lyrics"
                     onChange={(e) => setLyricSearch(e.target.value)}
                     />
-                    <Link className="bg-sky-500 rounded-md font-bold text-white px-5 py-3 text-2xl"
+                    <Link className="bg-sky-500 rounded-md font-bold text-white px-5 py-2 text-xl"
 
                         href={{
                         pathname: '/dashboard',
@@ -27,8 +32,6 @@ const Layout = ({ children } : {children: React.ReactNode }) => {
                         }
                     }}>Search song </Link>
                 </div>
-
-                <div>Navr bar dashboard</div>
 
 
 
