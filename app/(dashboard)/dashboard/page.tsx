@@ -79,7 +79,6 @@ const Songs = () => {
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
-                console.log(result.result.tracks.hits);
                 setSongs(result.result.tracks.hits)
 
 
@@ -90,7 +89,7 @@ const Songs = () => {
           };
 
           fetchData();
-        }, [currentLyric]);
+        }, [lyric]);
 
 
 
@@ -114,10 +113,10 @@ const Songs = () => {
 
 
             <div className="flex flex-wrap gap-1">
-                {songs.map(song =>
+                {songs.map((song, index) =>
                     <div  className="flex flex-col" key={song.key}>
 
-                        <div className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
+                        <Link href={`/dashboard/songs/${index}`} className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
                             <img className="w-60 object-fill rounded-md" src={song.images.default} />
                             <div className="w-60 text-start">
                                 <p>{song.heading.title}</p>
@@ -125,7 +124,7 @@ const Songs = () => {
 
                             </div>
 
-                        </div>
+                        </Link>
 
 
                     </div>
