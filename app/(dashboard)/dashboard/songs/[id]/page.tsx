@@ -14,11 +14,19 @@ const SelectedSong = () => {
     const name = searchParams.get('name')
     const songUrl = searchParams.get('songUrl')
     const explicit = searchParams.get('explicit')
-    console.log(songUrl, 'song url')
-    console.log(explicit, 'explicit')
 
-    function play() {
-        console.log(playBtn)
+    let playAudio = songUrl ? new Audio(songUrl) : new Audio();
+
+
+
+    function playSong() {
+
+        if (!playBtn) {
+            playAudio.play()
+        }
+        else {
+            playAudio.pause()
+        }
         setPlayBtn(!playBtn)
 
     }
@@ -41,10 +49,10 @@ const SelectedSong = () => {
 
                     <div className='flex justify-start'>
                         {!playBtn
-                            && <img className="h-20" src="/play-circle.svg" onClick={play}/>
+                            && <img className="h-20" src="/play-circle.svg" onClick={playSong}/>
                         }
                         {
-                            playBtn && <img className="h-20" src="/pause-circle.svg" onClick={play}/>
+                            playBtn && <img className="h-20" src="/pause-circle.svg" onClick={playSong}/>
                         }
 
                     </div>

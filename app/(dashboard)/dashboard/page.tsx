@@ -152,7 +152,6 @@ const Songs = () => {
                             <img className="w-60 object-fill rounded-md" src={song.images.default} />
                             <div className="w-60 text-start">
                                 <p>{song.heading.title}</p>
-                                <p>{song.stores.id}</p>
                                 <p className="text-[#A5A5A5]">{song.heading.subtitle}</p>
 
                             </div>
