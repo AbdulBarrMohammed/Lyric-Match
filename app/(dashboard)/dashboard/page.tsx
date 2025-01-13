@@ -66,7 +66,7 @@ const Songs = () => {
 
         const fetchData = async () => {
 
-
+            /*
             const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
             const options = {
                 method: 'GET',
@@ -74,11 +74,21 @@ const Songs = () => {
                     'x-rapidapi-key': '6fcd2a3ab1mshfb67ad05e307206p1ddbf9jsnbada5cabdb8b',
                     'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
                 }
+            }; */
+
+            const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '49605f3fa2mshd6383c26470d8f3p104f84jsna59fbf510c1f',
+                    'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
+                }
             };
 
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
+                console.log(result)
                 setSongs(result.result.tracks.hits)
 
 
@@ -116,7 +126,19 @@ const Songs = () => {
                 {songs.map((song, index) =>
                     <div  className="flex flex-col" key={song.key}>
 
-                        <Link href={`/dashboard/songs/${index}`} className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
+                        <Link
+                        /* href={`/dashboard/songs/${index}`}  */
+                        href={{
+                            pathname: `/dashboard/songs/${index}`,
+                            query: {
+
+                              image : song.images.default,
+                              artist : song.heading.subtitle,
+                              name: song.heading.title
+
+                            }
+                          }}
+                        className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
                             <img className="w-60 object-fill rounded-md" src={song.images.default} />
                             <div className="w-60 text-start">
                                 <p>{song.heading.title}</p>

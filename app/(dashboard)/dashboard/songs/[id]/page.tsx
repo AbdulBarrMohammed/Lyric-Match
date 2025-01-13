@@ -1,15 +1,21 @@
+"use client";
+import { useSearchParams } from 'next/navigation'
+
+const SelectedSong = () => {
 
 
-const SelectedSong = ({ params } : {params : { id: string }}) => {
+    const searchParams = useSearchParams();
 
-    const { id } = params;
+    const artist = searchParams.get('artist')
+
 
     return (
         <div>
-            <h1>This is the selected song and lyrics id {id} </h1>
+            <h1>This is the selected song and lyrics has the artist {artist} </h1>
+
         </div>
     )
 }
 
 
-export default SelectedSong
+export default SelectedSong;
