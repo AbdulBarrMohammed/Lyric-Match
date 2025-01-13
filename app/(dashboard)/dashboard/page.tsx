@@ -12,8 +12,7 @@ const Songs = () => {
         url: string
         heading: Heading
         images: Image
-
-        //images: []
+        stores : Stores
 
     }
 
@@ -25,6 +24,16 @@ const Songs = () => {
 
     interface Image {
         default: string
+    }
+
+    interface Stores {
+        apple: Apple
+    }
+
+    interface Apple {
+        trackid?: string
+        previewurl?: string
+        explicit?: boolean
     }
 
     const [songs, setSongs] = useState<Song[]>([]);
@@ -47,6 +56,7 @@ const Songs = () => {
 
     const searchParams = useSearchParams();
     //const currentLyric = searchParams.get('search') || '';
+
 
 
 
@@ -97,8 +107,9 @@ const Songs = () => {
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
-                console.log(result)
+                console.log(result.result.tracks.hits[0])
                 setSongs(result.result.tracks.hits)
+
 
 
 
@@ -131,7 +142,9 @@ const Songs = () => {
 
                               image : song.images.default,
                               artist : song.heading.subtitle,
-                              name: song.heading.title
+                              name: song.heading.title,
+                              songUrl: song.stores.apple.previewurl,
+                              explicit: song.stores.apple.explicit
 
                             }
                           }}
@@ -139,6 +152,7 @@ const Songs = () => {
                             <img className="w-60 object-fill rounded-md" src={song.images.default} />
                             <div className="w-60 text-start">
                                 <p>{song.heading.title}</p>
+                                <p>{song.stores.id}</p>
                                 <p className="text-[#A5A5A5]">{song.heading.subtitle}</p>
 
                             </div>

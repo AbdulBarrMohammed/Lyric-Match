@@ -13,12 +13,15 @@ export default function Home() {
   interface Album {
     id: string;
     images: Image[]
+
   }
 
   interface Image {
     id: string
     url: string
   }
+
+
 
 
   const [listAlbums, setListAlbums] = useState<Album[]>([]);

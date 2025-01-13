@@ -1,14 +1,27 @@
 "use client";
 import { useSearchParams } from 'next/navigation'
+import { useState } from "react";
+
 
 const SelectedSong = () => {
 
 
     const searchParams = useSearchParams();
+    const [playBtn, setPlayBtn] = useState(false);
 
     const artist = searchParams.get('artist')
     const image = searchParams.get('image')
     const name = searchParams.get('name')
+    const songUrl = searchParams.get('songUrl')
+    const explicit = searchParams.get('explicit')
+    console.log(songUrl, 'song url')
+    console.log(explicit, 'explicit')
+
+    function play() {
+        console.log(playBtn)
+        setPlayBtn(!playBtn)
+
+    }
 
 
     return (
@@ -23,11 +36,17 @@ const SelectedSong = () => {
                     <div>
                         <h1 className='text-7xl'>{name}</h1>
                         <p className='text-3xl'>{artist}</p>
+                        <p>{songUrl}</p>
                     </div>
 
                     <div className='flex justify-start'>
-                        <img className="h-20" src="/play-circle.svg" />
-                        <img className="h-20" src="/pause-circle.svg" />
+                        {!playBtn
+                            && <img className="h-20" src="/play-circle.svg" onClick={play}/>
+                        }
+                        {
+                            playBtn && <img className="h-20" src="/pause-circle.svg" onClick={play}/>
+                        }
+
                     </div>
 
 
