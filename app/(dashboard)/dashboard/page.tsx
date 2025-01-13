@@ -46,19 +46,18 @@ const Songs = () => {
     ];
 
     const searchParams = useSearchParams();
-    const currentLyric = searchParams.get('search') || '';
+    //const currentLyric = searchParams.get('search') || '';
 
 
 
 
     useEffect(() => {
 
-
-        //Get random lyric
+         //Get random lyric
         const randInt = Math.floor(Math.random() * (famousLyrics.length - 0 + 1) + 0);
 
         //Set current lyric if search query is not empty else choose random lyric
-        const currentLyric = searchParams.get('search') || famousLyrics[randInt];
+        const currentLyric = searchParams.get('search') || famousLyrics[0];
         setLyric(currentLyric)
 
         //Replace all space instances with %20
@@ -76,11 +75,21 @@ const Songs = () => {
                 }
             }; */
 
+            /*
             const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
             const options = {
                 method: 'GET',
                 headers: {
                     'x-rapidapi-key': '49605f3fa2mshd6383c26470d8f3p104f84jsna59fbf510c1f',
+                    'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
+                }
+            }; */
+
+            const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'x-rapidapi-key': '81e42ad7ffmsh3015e1e91e965c4p11f062jsnfb6f5accadc3',
                     'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
                 }
             };
