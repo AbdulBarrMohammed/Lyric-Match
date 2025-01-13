@@ -1,13 +1,10 @@
 "use client";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Typewriter from 'typewriter-effect';
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
 
 
 export default function Home() {
-  const router = useRouter();
-
 
 
   interface Album {
@@ -29,6 +26,12 @@ export default function Home() {
 
 
     useEffect(() => {
+
+      /**
+       * Fetches data from api
+       * @param none
+       * @return none
+       */
       const fetchData = async () => {
 
         const url = 'https://spotify23.p.rapidapi.com/albums/?ids=2ANVost0y2y52ema1E9xAZ%2C7dK54iZuOxXFarGhXwEXfF%2C4xwx0x7k6c5VuThz5qVqmV%2C0ETFjACtuP2ADo6LFhL6HN%2C2HTbQ0RHwukKVXAlTmCZP2%2C6QaVfG1pHYl1z15ZxkvVDW%2C7ycBtnsMtyVbbwTfJwRjSP%2C5uYDAwW0SZgcfOFkxrST64%2C3HZKOk1knxrUU3y5ZIOdbz%2C20r762YmB5HeofjMCiPMLv%2C5XpEKORZ4y6OrCZSKsi46A%2C1uD1kdwTWH1DZQZqGKz6rY%2C2tm3Ht61kqqRZtIYsBjxEj%2C3tx8gQqWbGwqIGZHqDNrGe%2C3mH6qwIy9crq0I9YQbOuDf%2C0bUTHlWbkSQysoM3VsWldT';
@@ -48,7 +51,7 @@ export default function Home() {
           }
           const result = await response.json();
 
-            //Set albums in a array
+          //Set albums in a array
           setListAlbums(result.albums)
 
         } catch (error) {
@@ -58,18 +61,6 @@ export default function Home() {
 
       fetchData();
     }, []);
-
-
-    async function submitSearch(event: FormEvent<HTMLFormElement>) {
-      /*
-      event.preventDefault()
-      const formData = new FormData(event.currentTarget)
-
-      console.log('entered search item', lyricSearch)
-      router.push(`/dashboard`) */
-
-    }
-
 
   return (
     <div className="flex flex-col items-center h-screen">
@@ -96,7 +87,7 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-3">
 
-          <form onSubmit={submitSearch} className="flex gap-3">
+          <form className="flex gap-3">
 
             <input type="text" id="lyric" name="lyric" maxLength={50} className="pl-4 bg-[#1F1F1F] border border-white rounded-md text-lg pr-20"
              placeholder="Enter lyrics"

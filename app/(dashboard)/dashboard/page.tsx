@@ -5,8 +5,7 @@ import { useSearchParams } from 'next/navigation'
 
 const Songs = () => {
 
-    //DASHBOARD
-
+    // API Object interfaces
     interface Song {
         key: string
         url: string
@@ -36,6 +35,7 @@ const Songs = () => {
         explicit?: boolean
     }
 
+
     const [songs, setSongs] = useState<Song[]>([]);
     const [lyric, setLyric] = useState("");
     const famousLyrics = [
@@ -57,43 +57,24 @@ const Songs = () => {
     const searchParams = useSearchParams();
     const currentLyric = searchParams.get('search') || '';
 
-
-
-
-
     useEffect(() => {
 
          //Get random lyric
         const randInt = Math.floor(Math.random() * (famousLyrics.length - 0 + 1) + 0);
 
         //Set current lyric if search query is not empty else choose random lyric
-        const currentLyric = searchParams.get('search') || famousLyrics[0];
+        const currentLyric = searchParams.get('search') || famousLyrics[randInt];
         setLyric(currentLyric)
 
         //Replace all space instances with %20
         const searchQuery = currentLyric ? currentLyric.replaceAll(" ", '%20') : 'it is empty';
 
+        /**
+         * Fetch api data
+         * @param none
+         * @return none
+         */
         const fetchData = async () => {
-
-            /*
-            const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
-            const options = {
-                method: 'GET',
-                headers: {
-                    'x-rapidapi-key': '6fcd2a3ab1mshfb67ad05e307206p1ddbf9jsnbada5cabdb8b',
-                    'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
-                }
-            }; */
-
-            /*
-            const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
-            const options = {
-                method: 'GET',
-                headers: {
-                    'x-rapidapi-key': '49605f3fa2mshd6383c26470d8f3p104f84jsna59fbf510c1f',
-                    'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
-                }
-            }; */
 
             const url = `https://shazam-api6.p.rapidapi.com/shazam/search_track/?query=${searchQuery}&limit=10`;
             const options = {
@@ -111,12 +92,8 @@ const Songs = () => {
                     setSongs(result.result.tracks.hits)
                 }
                 else {
-                    console.log('error')
                     alert("Cannot find song with lyrics")
                 }
-
-
-
 
 
             } catch (error) {
@@ -141,7 +118,7 @@ const Songs = () => {
                     <div  className="flex flex-col" key={song.key}>
 
                         <Link
-                        /* href={`/dashboard/songs/${index}`}  */
+
                         href={{
                             pathname: `/dashboard/songs/${index}`,
                             query: {

@@ -12,10 +12,10 @@ const Layout = ({ children } : {children: React.ReactNode }) => {
             <div className="flex items-center justify-between px-5 py-5">
 
                 <div className="flex gap-10 items-center">
-                    <div className='flex gap-2 items-center'>
+                    <Link href="/" className='flex gap-2 items-center'>
                         <img src={'/music-circle.svg'} className='h-12' />
                         <h1 className='text-3xl font-semibold'>LyricMatch</h1>
-                    </div>
+                    </Link>
 
                     <ul className="flex gap-5 text-lg">
                         <li><Link href="/">Home</Link></li>
