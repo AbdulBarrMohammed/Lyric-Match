@@ -55,7 +55,7 @@ const Songs = () => {
     ];
 
     const searchParams = useSearchParams();
-    //const currentLyric = searchParams.get('search') || '';
+    const currentLyric = searchParams.get('search') || '';
 
 
 
@@ -107,8 +107,14 @@ const Songs = () => {
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
-                console.log(result.result.tracks.hits[0])
-                setSongs(result.result.tracks.hits)
+                if (result.result.tracks) {
+                    setSongs(result.result.tracks.hits)
+                }
+                else {
+                    console.log('error')
+                    alert("Cannot find song with lyrics")
+                }
+
 
 
 
@@ -119,7 +125,7 @@ const Songs = () => {
           };
 
           fetchData();
-        }, [lyric]);
+        }, [currentLyric]);
 
 
 
