@@ -1,13 +1,13 @@
 "use client";
 import { useSearchParams } from 'next/navigation'
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 const SelectedSong = () => {
 
 
     const searchParams = useSearchParams();
-    const [playBtn, setPlayBtn] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     const artist = searchParams.get('artist')
     const image = searchParams.get('image')
@@ -15,20 +15,39 @@ const SelectedSong = () => {
     const songUrl = searchParams.get('songUrl')
     const explicit = searchParams.get('explicit')
 
-    let playAudio = songUrl ? new Audio(songUrl) : new Audio();
+    //let playAudio = songUrl ? new Audio(songUrl) : new Audio();
+
+    const audioRef = useRef<HTMLAudioElement>(null);
+
 
 
 
     function playSong() {
 
-        if (!playBtn) {
-            playAudio.play()
+        if (audioRef.current) {
+            audioRef.current.play()
+        }
+
+        setIsPlaying(true)
+
+
+    }
+
+    function pauseSong() {
+        if (audioRef.current) {
+            audioRef.current.pause()
+        }
+
+        setIsPlaying(false);
+    }
+
+    function playPause() {
+        if (isPlaying) {
+            pauseSong()
         }
         else {
-            playAudio.pause()
+            playSong()
         }
-        setPlayBtn(!playBtn)
-
     }
 
 
@@ -44,16 +63,20 @@ const SelectedSong = () => {
                     <div>
                         <h1 className='text-7xl'>{name}</h1>
                         <p className='text-3xl'>{artist}</p>
-                        <p>{songUrl}</p>
                     </div>
 
                     <div className='flex justify-start'>
-                        {!playBtn
-                            && <img className="h-20" src="/play-circle.svg" onClick={playSong}/>
+
+                        <div onClick={playPause}>
+                            {isPlaying ? <img className="h-20" src="/pause-circle.svg"/> : <img className="h-20" src="/play-circle.svg"/>}
+                        </div>
+
+
+                        {songUrl &&
+                            <audio ref={audioRef} src={songUrl} />
                         }
-                        {
-                            playBtn && <img className="h-20" src="/pause-circle.svg" onClick={playSong}/>
-                        }
+
+
 
                     </div>
 

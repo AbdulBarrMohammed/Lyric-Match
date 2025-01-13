@@ -47,11 +47,6 @@ export default function Home() {
             throw new Error('Network response was not ok');
           }
           const result = await response.json();
-          /*
-          for (let i = 0; i < result.albums.length; i++) {
-            setListAlbums(result.albums)
-
-          } */
 
             //Set albums in a array
           setListAlbums(result.albums)
