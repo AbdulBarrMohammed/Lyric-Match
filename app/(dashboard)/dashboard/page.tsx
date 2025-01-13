@@ -118,18 +118,6 @@ const Songs = () => {
 
             <h1 className="flex flex-start px-5 text-3xl font-bold items-center">Songs with lyrics: <span className="font-normal ml-2 text-2xl"> "{lyric}"</span></h1>
 
-            {/*
-
-            <ul>
-                <li><Link href="/dashboard/songs/1">Song one</Link></li>
-                <li><Link href="/dashboard/songs/2"> Song two</Link></li>
-                <li><Link href="/dashboard/songs/3">Song three</Link></li>
-
-
-            </ul>
-            */}
-
-
 
             <div className="flex flex-wrap gap-1">
                 {songs.map((song, index) =>
