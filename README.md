@@ -17,8 +17,8 @@ The following **extensions** and **tools** are implemented:
 
 ## Video walkthrough
 
-![lyricMatchVid](https://github.com/user-attachments/assets/5fa3718b-64ef-4ddc-ad51-0a59f2cb45c5)
-<img src="walkthrough.gif" title="Video Walkthrough" style="width:1000px;" alt="Video Walkthrough" />
+![lyricMatchVid (1)](https://github.com/user-attachments/assets/3ac2ea60-e074-4e4d-8b05-bcd3dba0b2c6)
+
 
 
 
