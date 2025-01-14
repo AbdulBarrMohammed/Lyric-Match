@@ -89,7 +89,7 @@ export default function Home() {
 
           <form className="flex gap-3">
 
-            <input type="text" id="lyric" name="lyric" maxLength={50} className="px-4 bg-[#1F1F1F] border border-white rounded-md text-lg w-80"
+            <input type="text" id="lyric" name="lyric" maxLength={50} minLength={2} className="px-4 bg-[#1F1F1F] border border-white rounded-md text-lg w-80"
              placeholder="Enter lyrics"
              onChange={(e) => setLyricSearch(e.target.value)}
             />
