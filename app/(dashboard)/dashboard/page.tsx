@@ -109,7 +109,7 @@ const Songs = () => {
 
     return (
 
-        <Suspense>
+
 
             <div className="py-10 flex flex-col h-screen px-3">
 
@@ -151,7 +151,7 @@ const Songs = () => {
 
             </div>
 
-        </Suspense>
+
 
 
     )

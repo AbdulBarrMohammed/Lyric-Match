@@ -50,7 +50,10 @@ const Layout = ({ children } : {children: React.ReactNode }) => {
 
 
             </div>
-            {children}
+            <Suspense fallback={<div>Loading...</div>}>
+                {children}
+            </Suspense>
+
         </div>
 
     )
