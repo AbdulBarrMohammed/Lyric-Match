@@ -21,6 +21,12 @@ The following **extensions** and **tools** are implemented:
 <img src="walkthrough.gif" title="Video Walkthrough" style="width:800px;" alt="Video Walkthrough" />
 
 
+## Image Layouts
+
+<img width="1436" alt="Screenshot 2025-01-14 at 2 17 59 PM" src="https://github.com/user-attachments/assets/bab29aaf-56a2-4205-ad4f-630b219b5c0b" />
+
+<img width="1439" alt="Screenshot 2025-01-14 at 2 19 36 PM" src="https://github.com/user-attachments/assets/94b7a161-c24b-4ea6-8318-13c28be6e975" />
+
 
 
 
