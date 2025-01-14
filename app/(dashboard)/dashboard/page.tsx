@@ -2,6 +2,7 @@
 import Link from "next/link"
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation'
+import {Suspense} from "react";
 
 const Songs = () => {
 
@@ -108,45 +109,51 @@ const Songs = () => {
 
     return (
 
-        <div className="py-10 flex flex-col h-screen px-3">
+        <Suspense>
 
-            <h1 className="flex flex-start px-5 text-3xl font-bold items-center">Songs with lyrics: <span className="font-normal ml-2 text-2xl"> &quot;{lyric}&quot;</span></h1>
+            <div className="py-10 flex flex-col h-screen px-3">
 
-
-            <div className="flex flex-wrap gap-1">
-                {songs.map((song, index) =>
-                    <div  className="flex flex-col" key={song.key}>
-
-                        <Link
-
-                        href={{
-                            pathname: `/dashboard/songs/${index}`,
-                            query: {
-
-                              image : song.images.default,
-                              artist : song.heading.subtitle,
-                              name: song.heading.title,
-                              songUrl: song.stores.apple.previewurl,
-                              explicit: song.stores.apple.explicit
-
-                            }
-                          }}
-                        className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
-                            <img className="w-60 object-fill rounded-md" src={song.images.default} />
-                            <div className="w-60 text-start">
-                                <p>{song.heading.title}</p>
-                                <p className="text-[#A5A5A5]">{song.heading.subtitle}</p>
-
-                            </div>
-
-                        </Link>
+                <h1 className="flex flex-start px-5 text-3xl font-bold items-center">Songs with lyrics: <span className="font-normal ml-2 text-2xl"> &quot;{lyric}&quot;</span></h1>
 
 
-                    </div>
-                )}
+                <div className="flex flex-wrap gap-1">
+                    {songs.map((song, index) =>
+                        <div  className="flex flex-col" key={song.key}>
+
+                            <Link
+
+                            href={{
+                                pathname: `/dashboard/songs/${index}`,
+                                query: {
+
+                                image : song.images.default,
+                                artist : song.heading.subtitle,
+                                name: song.heading.title,
+                                songUrl: song.stores.apple.previewurl,
+                                explicit: song.stores.apple.explicit
+
+                                }
+                            }}
+                            className="flex flex-col items-center gap-1 hover:bg-[#626262] p-5 rounded-md opacity-80 transition-all duration-300 ease-in-out cursor-pointer">
+                                <img className="w-60 object-fill rounded-md" src={song.images.default} />
+                                <div className="w-60 text-start">
+                                    <p>{song.heading.title}</p>
+                                    <p className="text-[#A5A5A5]">{song.heading.subtitle}</p>
+
+                                </div>
+
+                            </Link>
+
+
+                        </div>
+                    )}
+                </div>
+
             </div>
 
-        </div>
+        </Suspense>
+
+
     )
 }
 

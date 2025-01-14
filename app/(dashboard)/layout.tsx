@@ -1,12 +1,15 @@
 'use client';
 import Link from "next/link";
 import { useState } from "react";
+import {Suspense} from "react";
+
 
 const Layout = ({ children } : {children: React.ReactNode }) => {
 
     const [lyricSearch, setLyricSearch] = useState("");
 
     return (
+
 
         <div>
             <div className="flex items-center justify-between px-5 py-5">
