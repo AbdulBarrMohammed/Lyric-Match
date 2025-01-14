@@ -103,7 +103,7 @@ const Songs = () => {
           };
 
           fetchData();
-        }, [currentLyric, searchParams, famousLyrics]);
+        }, [currentLyric]);
 
 
 
