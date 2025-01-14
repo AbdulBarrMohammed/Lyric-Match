@@ -80,7 +80,7 @@ const Songs = () => {
             const options = {
                 method: 'GET',
                 headers: {
-                    'x-rapidapi-key': '81e42ad7ffmsh3015e1e91e965c4p11f062jsnfb6f5accadc3',
+                    'x-rapidapi-key': 'b0ad58c068mshb7c6e2819de986cp10f716jsn67e5daed9c25',
                     'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
                 }
             };
@@ -102,7 +102,7 @@ const Songs = () => {
           };
 
           fetchData();
-        }, [currentLyric]);
+        }, [currentLyric, searchParams, famousLyrics]);
 
 
 
@@ -110,7 +110,7 @@ const Songs = () => {
 
         <div className="py-10 flex flex-col h-screen px-3">
 
-            <h1 className="flex flex-start px-5 text-3xl font-bold items-center">Songs with lyrics: <span className="font-normal ml-2 text-2xl"> "{lyric}"</span></h1>
+            <h1 className="flex flex-start px-5 text-3xl font-bold items-center">Songs with lyrics: <span className="font-normal ml-2 text-2xl"> &quot;{lyric}&quot;</span></h1>
 
 
             <div className="flex flex-wrap gap-1">
