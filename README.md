@@ -17,6 +17,7 @@ The following **extensions** and **tools** are implemented:
 * RESTful API
 * Typescript
 * Next.js
+* Vercel
 
 ## Video walkthrough
 
