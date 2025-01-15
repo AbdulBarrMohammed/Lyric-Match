@@ -81,7 +81,7 @@ const Songs = () => {
             const options = {
                 method: 'GET',
                 headers: {
-                    'x-rapidapi-key': 'b0ad58c068mshb7c6e2819de986cp10f716jsn67e5daed9c25',
+                    'x-rapidapi-key': 'b497f57560msh202a56836901c25p164effjsn7ac53992f540',
                     'x-rapidapi-host': 'shazam-api6.p.rapidapi.com'
                 }
             };
