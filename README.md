@@ -2,6 +2,9 @@
 
 This is a web app that allows users to enter any lyric to a song they want to find or know the name of and display different song options that contain their lyric query using restful API
 
+# Web app link
+https://lyric-match.vercel.app/
+
 ## Functionality 
 
 The following **required** functionality is completed:
